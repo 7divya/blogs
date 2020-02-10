@@ -1,0 +1,40 @@
+<%# binding.pry %>
+<h1>Listing Article</h1>
+
+<%= link_to 'New article', new_article_path %><br><br><br>
+
+
+
+
+	
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Text</th>
+		
+		
+		<th colspan="2">click button</th>
+	</tr>
+
+<%= form_tag('/articles', method: :get) do %>
+  
+  <%= text_field_tag :search,params[:search] %>
+  <%= submit_tag('Search' , name:nil)  %>
+<% end %>
+
+	<% @articles.each do |article| %>
+		<tr>
+			<td><%= article.title %></td>
+			<td><%= article.text %></td>
+			
+			
+			<td><%= link_to 'show', article_path(article) %></td>
+			
+			<td><%= link_to 'Edit', edit_article_path(article) %></td>
+			<td><%= link_to 'Destroy', article_path(article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+</table>
+

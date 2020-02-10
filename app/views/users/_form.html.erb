@@ -1,0 +1,15 @@
+<%= form_with(model: [ @user, @user.article.comment.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :password %><br>
+    <%= form.password_field :password %>
+  </p>
+  <p>
+    <%= form.label : Login %><br>
+    <%= form.submit %>
+  </p>
+<% end %>
+ 

@@ -1,0 +1,110 @@
+<%= form_for @article do |form| %>
+ 
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@article.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </p>
+
+ <!--  <p>
+   <%=form.check_box (:search) %>
+     <%= form.label :search,"i agree" %><br>
+  </p>
+  <p>
+    <%=form.radio_button :search, "title" %>
+    <%= form.label :search_title, "it is a title" %>
+    <%= form.radio_button :search, "text" %>
+    <%= form.label :search_text,"this is text" %>
+  </p>
+  <p>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </p>
+  <p>
+    <%= form.label :hidden %>
+    <%= form.hidden_field :search %>
+  </p>
+  <P>
+    <%= form.label :search,"search for" %>
+    <%= form.search_field :search %>
+  </P>
+  <P>
+    <%= form.label :telephone %>
+    <%= telephone_field(:text, :search) %>
+  </P>
+
+  <p>
+    <%= email_field :email, :address %><br>
+    <%= date_field(:artcile, :born_on) %><br>
+    <%= datetime_local_field(:user, :gradution_day) %><br>
+    <%= month_field(:user, :birthday_month) %><br>
+    <%= week_field(:user, :birthday_week) %><br>
+    <%= url_field(:user, :homepage) %><br>
+    <%= email_field(:user, :address) %><br>
+    <%= color_field(:user, :favorite_color) %><br>
+    <%= time_field(:task, :started_at) %><br>
+    <%= number_field(:product, :price, in: 1.0..20.0, step: 0.5) %><br>
+    <%= range_field(:product, :discount, in: 1..100) %><br>
+    <%= file_field(:search, :avatar) %><br>
+    <%= file_field(:article, :attached, :accept=>'text/html') %><br>
+  </p>
+  <p>
+    <%= select_tag(:city_id, raw('<option value="0">select</option><option value="1">indore</option><option value= "2">ujjain</option><option value="3">jaipur</option>')) %>
+  </p><br>
+  <p>
+    <%= select_tag 'city_id', options_for_select(['indore','ujjain','jaipur'],'jaipur') %>
+    
+  </p><br>
+  <p>
+    <% @article = Article.new(title: 1) %>
+
+    <%= select(:article, :title, [['Lisbon', 1], ['Madrid', 2], ['Berlin', 3]]) %>
+  </p>
+  <p>
+    <%= form_with model: @article do |article_form| %>
+      <%= article_form.select(:title,[[';indore',1],['ujjain',2],['jaipur',3]]) %>
+      <% end %>
+  </p>
+
+  <P>
+    <% article = Article.all.map { |article| [article.title,article.id]} %>
+    <%#= options_for_select(article) %>
+    <%= options_from_collection_for_select(Article.all, :id, :title) %>
+  </P>
+    <%= time_zone_select(:title, :time_zone) %><br>
+  <p= barebones helpers method> 
+    <%= select_date Date.today, prefix: :start_date %><br>
+    <%#= select_time Time.today, prefix: :start_time %><br>
+    <%#= select_datetime Datetime.today, prefix: :start_date %>
+  </p>
+  <p>
+    <%= date_select :articles, :birth_date %><br>
+
+<%= select_year(2009) %><br>
+<%= select_year(Time.new(2009)) %><br>
+  </p>
+   -->
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
+ <!-- to comment multiple line ctrl+shift+/  -->

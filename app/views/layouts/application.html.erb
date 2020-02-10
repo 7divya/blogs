@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blogs</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+<%#= audio_tag "when.mp3", id: "sound", class: "audio-to-play", autoplay: true %>
+  <% flash.each do |title, msg| %>
+  
+  <div class="alert alert- <%= title %>">
+    <%= msg %>
+  </div>
+  <% end %>
+
+
+  <body>
+    <%= yield %>
+    <%#= image_tag "a.jpg",size: 20*20 %>
+  </body>
+</html>
